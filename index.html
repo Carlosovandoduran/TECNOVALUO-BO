@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroEvalúa - Plataforma para Pequeños Productores</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background: #2e7d32;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        .header-logo {
+            max-height: 80px;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            align-items: center;
+            justify-self: center;
+
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background: #388e3c;
+            padding: 10px;
+            flex-wrap: wrap;
+        }
+        .tab {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 12px 25px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .tab.active {
+            background: #1b5e20;
+            color: white;
+        }
+        .content {
+            display: none;
+            padding: 30px 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .content.active {
+            display: block;
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .video-container {
+            position: relative;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .proceso-avaluo {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            color: #333;
+        }
+        .proceso-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .proceso-icon {
+            font-size: 1.5rem;
+            color: #2e7d32;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        .feature-section {
+            background: white;
+            padding: 40px 0;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .feature-img {
+            border-radius: 10px;
+            max-height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #2e7d32;
+            border-color: #2e7d32;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+        .btn-primary:hover {
+            background-color: #1b5e20;
+            border-color: #1b5e20;
+        }
+        .user-type-selector {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .user-type {
+            margin: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .user-icon {
+            font-size: 3rem;
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tab {
+                width: 90%;
+                margin: 5px 0;
+            }
+            .header-logo {
+                max-height: 60px;
+            }
+            .video-container {
+                height: 200px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <img src="logo2.jpg" alt="TECNOVALUOBO Logo" class="header-logo me-3">
+                <div>
+                    <h1>TECNOVALUOBO</h1>
+                    <p class="lead mb-0">Plataforma especializada en avalúos agrícolas rurales mediante SIG</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tabs">
+        <a href="index.html" class="tab active">Inicio</a>
+        <a href="Quienes somos.html" class="tab">Quienes somos</a>
+        <a href="Servicios.html" class="tab">Servicios que se ofertan</a>
+        <a href="planes.html" class="tab">Planes y precios</a>
+        <a href="informacion.html" class="tab">Información a conocer</a>
+        <a href="consultas.html" class="tab">Consultas</a>
+    </div>
+    
+    <div id="inicio" class="content active">
+        <div class="hero">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="video-container">
+                            <iframe src="https://drive.google.com/file/d/14DPYWOk0_gaSZc4AVmm3-T7Z3uPNHC_M/preview" allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="proceso-avaluo">
+                            <h3 class="text-center mb-4">El proceso del avalúo cuenta con:</h3>
+                            
+                            <div class="proceso-item">
+                                <div class="proceso-icon"><i class="fas fa-file-alt"></i></div>
+                                <div>
+                                    <h5>Solicitud de avalúo</h5>
+                                    <p>Derivada de una solicitud de crédito a un banco o entidad financiera.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="proceso-item">
+                                <div class="proceso-icon"><i class="fas fa-calendar-check"></i></div>
+                                <div>
+                                    <h5>Agendamiento</h5>
+                                    <p>Coordinación entre el solicitante y el perito valuador para la inspección.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="proceso-item">
+                                <div class="proceso-icon"><i class="fas fa-search"></i></div>
+                                <div>
+                                    <h5>Inspección virtual</h5>
+                                    <p>Realizada mediante QGIS y Google Earth con fotos georreferenciadas.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <button class="btn btn-primary">Conocer más del proceso</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="feature-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Agricultura" class="img-fluid feature-img">
+                        <h3>Expertos en valuación agrícola</h3>
+                        <p>Nuestro equipo de peritos cuenta con amplia experiencia en el sector rural.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="dron.jpg" alt="Tecnología" class="img-fluid feature-img">
+                        <h3>Tecnología de punta</h3>
+                        <p>Utilizamos herramientas SIG y análisis geoespacial para valuaciones precisas.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Resultados" class="img-fluid feature-img">
+                        <h3>Resultados confiables</h3>
+                        <p>Informes detallados adaptados a los requisitos de bancos e instituciones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="user-type-selector">
+            <div class="user-type" onclick="showUserGuide('productor')">
+                <div class="user-icon">👨‍🌾</div>
+                <h4>Soy Productor</h4>
+                <p>Evalúa tu tierra y muestra su potencial</p>
+            </div>
+            <div class="user-type" onclick="showUserGuide('comprador')">
+                <div class="user-icon">🏡</div>
+                <h4>Soy Comprador</h4>
+                <p>Encuentra tierras con potencial</p>
+            </div>
+            <div class="user-type" onclick="showUserGuide('banco')">
+                <div class="user-icon">🏦</div>
+                <h4>Institución Financiera</h4>
+                <p>Accede a datos confiables</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- El resto del código permanece igual -->
+    <div id="evaluacion" class="content">
+        <!-- ... contenido existente ... -->
+    </div>
+    
+    <div id="mapas" class="content">
+        <!-- ... contenido existente ... -->
+    </div>
+    
+    <div id="datos" class="content">
+        <!-- ... contenido existente ... -->
+    </div>
+    
+    <div id="acerca" class="content">
+        <!-- ... contenido existente ... -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Función para mostrar pestañas
+        function showTab(tabName) {
+            var contents = document.querySelectorAll('.content');
+            var tabs = document.querySelectorAll('.tab');
+            contents.forEach(content => content.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`[onclick="showTab('${tabName}')"]`).classList.add('active');
+            
+            // Inicializar mapa cuando se muestra la pestaña
+            if(tabName === 'mapas' && !window.mapInitialized) {
+                initMap();
+                window.mapInitialized = true;
+            }
+        }
+        
+        // Función para guía de usuario
+        function showUserGuide(userType) {
+            alert(`Mostrando guía para ${userType}`);
+            // Aquí podrías redirigir a una sección específica o mostrar un modal
+        }
+        
+        // Función para calcular valoración
+        function calcularValoracion() {
+            const tamanio = parseFloat(document.getElementById('tamanio').value) || 1;
+            const zona = document.getElementById('ubicacion').value;
+            const tipoSuelo = document.getElementById('tipo-suelo').value;
+            const agua = document.getElementById('acceso-agua').value;
+            
+            // Factores base (simplificado para ejemplo)
+            let precioBase = 2000;
+            let factorZona = 1;
+            let factorSuelo = 1;
+            let factorAgua = 1;
+            
+            // Ajustes por zona
+            if(zona === 'norte') factorZona = 1.2;
+            if(zona === 'sur') factorZona = 0.9;
+            if(zona === 'este') factorZona = 1.1;
+            if(zona === 'oeste') factorZona = 1.0;
+            
+            // Ajustes por tipo de suelo
+            if(tipoSuelo === 'arcilloso') factorSuelo = 1.0;
+            if(tipoSuelo === 'arenoso') factorSuelo = 0.8;
+            if(tipoSuelo === 'franco') factorSuelo = 1.3;
+            if(tipoSuelo === 'limoso') factorSuelo = 1.1;
+            
+            // Ajustes por acceso a agua
+            if(agua === 'pozo') factorAgua = 1.4;
+            if(agua === 'comunitario') factorAgua = 1.1;
+            if(agua === 'rio') factorAgua = 1.2;
+            if(agua === 'ninguno') factorAgua = 0.7;
+            
+            // Cálculo final
+            const valorTotal = tamanio * precioBase * factorZona * factorSuelo * factorAgua;
+            const calidad = ((factorZona + factorSuelo + factorAgua) / 3) * 100;
+            
+            // Mostrar resultados
+            document.getElementById('valor-estimado').textContent = `Valor estimado: $${valorTotal.toLocaleString()}`;
+            document.getElementById('detalles-evaluacion').textContent = `Terreno de ${tamanio} ha en Zona ${zona.toUpperCase()}, suelo ${tipoSuelo} con acceso ${agua}.`;
+            document.getElementById('calidad-progreso').style.width = `${calidad}%`;
+            document.getElementById('calidad-texto').textContent = `Calidad de tierra: ${Math.round(calidad)}/100`;
+            document.getElementById('resultado-evaluacion').style.display = 'block';
+        }
+        
+        // Inicializar mapa
+        function initMap() {
+            const map = L.map('map').setView([-16.8, -62.5], 12);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Marcadores de ejemplo
+            L.marker([-16.8, -62.5]).addTo(map)
+                .bindPopup('Finca El Porvenir<br>15 ha<br>Valor: $45,000')
+                .openPopup();
+                
+            L.marker([-16.79, -62.51]).addTo(map)
+                .bindPopup('Terreno San Miguel<br>8 ha<br>Valor: $22,000');
+        }
+        
+        // Controlador para el filtro de tamaño
+        document.getElementById('filtro-tamanio').addEventListener('input', function() {
+            document.getElementById('valor-tamanio').textContent = this.value + ' ha';
+        });
+        
+        // Inicializar gráfico cuando se carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gráfico de ejemplo
+            const ctx = document.getElementById('indicadoresChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    datasets: [{
+                        label: 'Precio por ha ($)',
+                        data: [2100, 2150, 2200, 2250, 2300, 2350, 2400, 2450, 2500, 2550, 2600, 2650],
+                        borderColor: '#2e7d32',
+                        tension: 0.1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

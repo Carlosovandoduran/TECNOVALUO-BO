@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - TECNOVALÚOBO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #2E7D32;
+            --secondary-green: #388E3C;
+            --light-green: #8BC34A;
+            --accent-green: #689F38;
+            --dark-green: #1B5E20;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-text: #212121;
+            --medium-text: #757575;
+            --form-blue: #2196F3;
+            --chat-orange: #FF9800;
+            --phone-red: #F44336;
+            --email-purple: #9C27B0;
+            --faq-yellow: #FFC107;
+            --social-blue: #3B5998;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, 
+                var(--form-blue), 
+                var(--chat-orange), 
+                var(--phone-red), 
+                var(--email-purple), 
+                var(--faq-yellow), 
+                var(--social-blue));
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .intro-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-top: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2:after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--light-green);
+            margin: 10px auto;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .contact-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            border-top: 5px solid;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .form-card {
+            border-top-color: var(--form-blue);
+        }
+        
+        .chat-card {
+            border-top-color: var(--chat-orange);
+        }
+        
+        .phone-card {
+            border-top-color: var(--phone-red);
+        }
+        
+        .email-card {
+            border-top-color: var(--email-purple);
+        }
+        
+        .faq-card {
+            border-top-color: var(--faq-yellow);
+        }
+        
+        .social-card {
+            border-top-color: var(--social-blue);
+        }
+        
+        .contact-header {
+            padding: 25px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, var(--form-blue), #64B5F6);
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--chat-orange), #FFB74D);
+        }
+        
+        .phone-header {
+            background: linear-gradient(135deg, var(--phone-red), #E57373);
+        }
+        
+        .email-header {
+            background: linear-gradient(135deg, var(--email-purple), #BA68C8);
+        }
+        
+        .faq-header {
+            background: linear-gradient(135deg, var(--faq-yellow), #FFD54F);
+        }
+        
+        .social-header {
+            background: linear-gradient(135deg, var(--social-blue), #5C6BC0);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .contact-title {
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 700;
+        }
+        
+        .contact-content {
+            padding: 25px;
+        }
+        
+        .contact-content ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .contact-content li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-content li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .form-icon {
+            color: var(--form-blue);
+        }
+        
+        .chat-icon {
+            color: var(--chat-orange);
+        }
+        
+        .phone-icon {
+            color: var(--phone-red);
+        }
+        
+        .email-icon {
+            color: var(--email-purple);
+        }
+        
+        .faq-icon {
+            color: var(--faq-yellow);
+        }
+        
+        .social-icon {
+            color: var(--social-blue);
+        }
+        
+        .btn-contact {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            margin: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .btn-form {
+            background-color: var(--form-blue);
+        }
+        
+        .btn-chat {
+            background-color: var(--chat-orange);
+        }
+        
+        .btn-phone {
+            background-color: var(--phone-red);
+        }
+        
+        .btn-email {
+            background-color: var(--email-purple);
+        }
+        
+        .btn-faq {
+            background-color: var(--faq-yellow);
+            color: var(--dark-text);
+        }
+        
+        .btn-social {
+            background-color: var(--social-blue);
+        }
+        
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        
+        .support-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        /* Botón flotante de volver */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-green);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: var(--dark-green);
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-text">TECNOVALÚOBO</div>
+            </div>
+            <h1>Contáctanos</h1>
+            <p class="intro-text">En TECNOVALÚOBO valoramos profundamente la comunicación fluida y transparente con nuestros usuarios.</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h2>Múltiples canales a tu disposición</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Ofrecemos diversas opciones para que puedas realizar consultas, aclarar dudas o solicitar soporte técnico</p>
+        
+        <div class="contact-methods">
+            <!-- Formulario Online -->
+            <div class="contact-card form-card">
+                <div class="contact-header form-header">
+                    <i class="fas fa-desktop contact-icon"></i>
+                    <h3 class="contact-title">Formulario de Consultas Online</h3>
+                </div>
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Formulario online" class="support-image">
+                <div class="contact-content">
+                    <p>Completa fácilmente nuestro formulario digital con tus datos y consulta.</p>
+                    <ul>
+                        <li><i class="far fa-clock feature-icon form-icon"></i> <strong>Tiempo de respuesta:</strong> 24 horas hábiles</li>
+                        <li><i class="fas fa-calendar-alt feature-icon form-icon"></i> <strong>Disponibilidad:</strong> 24/7</li>
+                    </ul>
+                </div>
+                <a href="#form" class="btn-contact btn-form">Acceder al formulario</a>
+            </div>
+            
+            <!-- Chat en Línea -->
+            <div class="contact-card chat-card">
+                <div class="contact-header chat-header">
+                    <i class="fas fa-comments contact-icon"></i>
+                    <h3 class="contact-title">Chat en Línea</h3>
+                </div>
+                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Chat en línea" class="support-image">
+                <div class="contact-content">
+                    <p>Asesoría inmediata con nuestros especialistas a través del chat interactivo.</p>
+                    <ul>
+                        <li><i class="far fa-clock feature-icon chat-icon"></i> <strong>Horario:</strong> Lunes a viernes 8:00-18:00</li>
+                        <li><i class="fas fa-bolt feature-icon chat-icon"></i> <strong>Respuesta:</strong> En tiempo real</li>
+                    </ul>
+                </div>
+                <a href="#chat" class="btn-contact btn-chat">Iniciar chat</a>
+            </div>
+            
+            <!-- Consultas Telefónicas -->
+            <div class="contact-card phone-card">
+                <div class="contact-header phone-header">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <h3 class="contact-title">Consultas Telefónicas</h3>
+                </div>
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Atención telefónica" class="support-image">
+                <div class="contact-content">
+                    <p>Atención personalizada para resolver tus consultas urgentes por teléfono.</p>
+                    <ul>
+                        <li><i class="fas fa-phone feature-icon phone-icon"></i> <strong>Santa Cruz:</strong> (+591) 75574849</li>
+                        <li><i class="fab fa-whatsapp feature-icon phone-icon"></i> <strong>WhatsApp:</strong> (+591) 7-5574849</li>
+                        <li><i class="far fa-clock feature-icon phone-icon"></i> <strong>Horario:</strong> Lunes a viernes 8:00-18:00</li>
+                    </ul>
+                </div>
+                <a href="tel:+59175574849" class="btn-contact btn-phone">Llamar ahora</a>
+            </div>
+            
+            <!-- Correo Electrónico -->
+            <div class="contact-card email-card">
+                <div class="contact-header email-header">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <h3 class="contact-title">Correo Electrónico</h3>
+                </div>
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Correo electrónico" class="support-image">
+                <div class="contact-content">
+                    <p>Envíanos tus consultas técnicas o administrativas por correo electrónico.</p>
+                    <ul>
+                        <li><i class="fas fa-at feature-icon email-icon"></i> <strong>Email:</strong> contacto@tecnovaluobo.bo</li>
+                        <li><i class="far fa-clock feature-icon email-icon"></i> <strong>Respuesta:</strong> 24 horas hábiles</li>
+                    </ul>
+                </div>
+                <a href="mailto:contacto@tecnovaluobo.bo" class="btn-contact btn-email">Enviar email</a>
+            </div>
+            
+            <!-- Preguntas Frecuentes -->
+            <div class="contact-card faq-card">
+                <div class="contact-header faq-header">
+                    <i class="fas fa-question-circle contact-icon"></i>
+                    <h3 class="contact-title">Preguntas Frecuentes</h3>
+                </div>
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Preguntas frecuentes" class="support-image">
+                <div class="contact-content">
+                    <p>Respuestas rápidas a las dudas más comunes sobre nuestros servicios.</p>
+                    <ul>
+                        <li><i class="fas fa-search feature-icon faq-icon"></i> Proceso de solicitud de avalúos</li>
+                        <li><i class="fas fa-laptop feature-icon faq-icon"></i> Uso de la plataforma</li>
+                        <li><i class="fas fa-gavel feature-icon faq-icon"></i> Información legal y normativa</li>
+                        <li><i class="fas fa-drone-alt feature-icon faq-icon"></i> Tecnologías utilizadas</li>
+                    </ul>
+                </div>
+                <a href="#faq" class="btn-contact btn-faq">Ver preguntas frecuentes</a>
+            </div>
+            
+            <!-- Redes Sociales -->
+            <div class="contact-card social-card">
+                <div class="contact-header social-header">
+                    <i class="fas fa-share-alt contact-icon"></i>
+                    <h3 class="contact-title">Redes Sociales</h3>
+                </div>
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Redes sociales" class="support-image">
+                <div class="contact-content">
+                    <p>Síguenos para mantenerte informado sobre novedades y noticias del sector.</p>
+                    <ul>
+                        <li><i class="fab fa-facebook feature-icon social-icon"></i> <strong>Facebook:</strong> TECNOVALÚOBO</li>
+                        <li><i class="fab fa-instagram feature-icon social-icon"></i> <strong>Instagram:</strong> @tecnovaluobo</li>
+                        <li><i class="fab fa-linkedin feature-icon social-icon"></i> <strong>LinkedIn:</strong> TECNOVALÚOBO</li>
+                    </ul>
+                </div>
+                <a href="https://facebook.com/tecnovaluobo" target="_blank" class="btn-contact btn-social">Seguir en Facebook</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Botón flotante para volver -->
+    <a href="index.html" class="back-button" title="Volver al inicio">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+    </a>
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

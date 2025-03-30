@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quienes Somos - TECNOVALÚOBO</title>
+    <style>
+        :root {
+            --primary-green: #2E7D32;
+            --secondary-green: #388E3C;
+            --light-green: #8BC34A;
+            --accent-green: #689F38;
+            --dark-green: #1B5E20;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-text: #212121;
+            --medium-text: #757575;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin: 5px 0;
+        }
+        
+        h2 {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            margin-top: 30px;
+            border-bottom: 2px solid var(--light-green);
+            padding-bottom: 6px;
+        }
+        
+        h3 {
+            color: var(--secondary-green);
+            font-size: 1.2rem;
+            margin-top: 25px;
+        }
+        
+        .section {
+            background-color: var(--white);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+        
+        .mission-vision-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .mission, .vision {
+            flex: 1;
+            background-color: var(--white);
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+            border-top: 3px solid var(--accent-green);
+        }
+        
+        .values-list, .team-list, .reasons-list {
+            columns: 2;
+            column-gap: 20px;
+        }
+        
+        .values-list li, .team-list li, .reasons-list li {
+            margin-bottom: 10px;
+            break-inside: avoid;
+        }
+        
+        .highlight-box {
+            background-color: rgba(139, 195, 74, 0.1);
+            border-left: 3px solid var(--light-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .btn-contact {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .btn-contact:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        
+        /* Botón flotante de volver */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-green);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: var(--dark-green);
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .mission-vision-container {
+                flex-direction: column;
+            }
+            
+            .values-list, .team-list, .reasons-list {
+                columns: 1;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-text">TECNOVALÚOBO</div>
+            </div>
+            <h1>Quienes somos</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="section">
+            <p><strong>TECNOVALÚOBO</strong> es una plataforma tecnológica innovadora especializada en avalúos agrícolas rurales mediante sistemas de información geográfica (SIG). Con sede inicial en el municipio de Cuatro Cañadas, Santa Cruz, Bolivia, nuestro equipo combina tecnología avanzada con experiencia técnica para ofrecer servicios ágiles, precisos y accesibles a propietarios rurales, entidades financieras y profesionales del área.</p>
+        </section>
+        
+        <div class="mission-vision-container">
+            <div class="mission">
+                <h3>Misión</h3>
+                <p>Facilitar y optimizar el acceso a servicios de avalúo agrícola rural en Bolivia, mediante tecnología avanzada en geoinformación, brindando valoraciones precisas, confiables y rápidas que promuevan el desarrollo rural sostenible e inclusivo.</p>
+            </div>
+            
+            <div class="vision">
+                <h3>Visión</h3>
+                <p>Convertirnos en la plataforma digital líder en avalúos agrícolas rurales en Bolivia, reconocidos por nuestra excelencia, transparencia e innovación tecnológica, contribuyendo al crecimiento económico y a la inclusión financiera del sector agrícola nacional.</p>
+            </div>
+        </div>
+        
+        <section class="section">
+            <h2>Objetivo General</h2>
+            <p>Implementar y consolidar un sistema digital basado en geoinformación que agilice, simplifique y mejore la precisión en los avalúos de propiedades agrícolas rurales, asegurando confiabilidad y accesibilidad económica a todos los actores involucrados en el proceso.</p>
+        </section>
+        
+        <section class="section">
+            <h2>Valores</h2>
+            <ul class="values-list">
+                <li><strong>Innovación tecnológica:</strong> Aplicamos herramientas avanzadas que garantizan precisión y rapidez.</li>
+                <li><strong>Compromiso social:</strong> Fomentamos la inclusión financiera y el desarrollo económico rural.</li>
+                <li><strong>Transparencia:</strong> Garantizamos procesos claros y confiables en todos nuestros servicios.</li>
+                <li><strong>Excelencia profesional:</strong> Contamos con profesionales altamente capacitados y comprometidos.</li>
+                <li><strong>Sostenibilidad:</strong> Promovemos prácticas sostenibles que protejan el medio ambiente y generen bienestar social.</li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>Equipo Profesional</h2>
+            <p>Contamos con un grupo multidisciplinario compuesto por:</p>
+            <ul class="team-list">
+                <li>Ingenieros agrónomos especializados en valorización de tierras.</li>
+                <li>Expertos certificados en sistemas de información geográfica (SIG).</li>
+                <li>Peritos valuadores acreditados por ASFI.</li>
+                <li>Desarrolladores informáticos especializados en plataformas digitales.</li>
+                <li>Profesionales en asesoramiento jurídico y normativo sobre propiedad rural.</li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>¿Por qué elegir TECNOVALÚOBO?</h2>
+            <div class="highlight-box">
+                <ul class="reasons-list">
+                    <li>Avalúos precisos realizados en tiempo récord mediante tecnologías geoespaciales.</li>
+                    <li>Precios accesibles que permiten mayor inclusión financiera.</li>
+                    <li>Seguridad jurídica y cumplimiento riguroso con normativas nacionales.</li>
+                    <li>Atención personalizada y soporte continuo a nuestros usuarios.</li>
+                </ul>
+            </div>
+            
+            <button class="btn-contact">Contáctanos</button>
+        </section>
+    </div>
+    
+    <!-- Botón flotante para volver -->
+    <a href="index.html" class="back-button" title="Volver al inicio">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+    </a>
+</body>
+</html>
